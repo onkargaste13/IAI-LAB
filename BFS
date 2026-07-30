@@ -1,0 +1,30 @@
+from collections import deque
+
+graph = {
+    'S': ['A', 'B'],
+    'A': ['C', 'D'],
+    'B': ['G', 'H'],
+    'C': ['E', 'F'],
+    'D': [], 
+    'E': ['K'],
+    'F': [],
+    'G': ['I'],
+    'H': [],
+    'I': [],
+    'K': []
+}
+
+def bfs(start):
+    q = deque([start])
+    visited = [start]
+
+    while q:
+        node = q.popleft()
+        print(node, end=" ")
+
+        for i in graph[node]:
+            if i not in visited:
+                visited.append(i)
+                q.append(i)
+
+bfs('S')
