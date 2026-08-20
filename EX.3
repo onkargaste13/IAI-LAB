@@ -1,0 +1,37 @@
+from collections import deque
+
+def bfs(graph, start):
+    visited = set()
+    queue = deque([start])
+
+    print("BFS Traversal:", end=" ")
+
+    while queue:
+        node = queue.popleft()
+
+        if node not in visited:
+            print(node, end=" ")
+            visited.add(node)
+
+            for neighbor in graph[node]:
+                if neighbor not in visited:
+                    queue.append(neighbor)
+
+graph = {
+    5: [3, 7],
+    3: [2, 4],
+    7: [8],
+    2: [],
+    4: [8],
+    8: []
+}
+
+print("""
+        5
+      /   \\
+     3     7
+    / \\     \\
+   2   4 ---> 8
+""")
+
+bfs(graph, 5)
